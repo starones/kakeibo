@@ -27,6 +27,7 @@ class IncomeValuesController < ApplicationController
       redirect_to income_values_path, notice: "登録しました。"
     else
       redirect_to income_values_path, notice: "登録に失敗しました。"
+    end
   end
 
   def income_form_params

@@ -1,7 +1,7 @@
 class Form::IncomeForm < Form::Base
   attr_accessor :income_values
 
-  def initialize(attributes = {})
+  def initialize(attributes = {} )
     super attributes
       incomes = Income.order(created_at: :asc)
       self.income_values = income.map { |income| IncomeValue.new(income_id: income.id) } unless income_values.present?
