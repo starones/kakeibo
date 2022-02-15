@@ -4,25 +4,25 @@ class Form::IncomeForm < Form::Base
   def initialize(attributes = {} )
     super attributes
       incomes = Income.order(created_at: :asc)
-      self.income_values = income.map { |income| IncomeValue.new(income_id: income.id) } unless income_values.present?
-    end
+      self.income_values = incomes.map { |income| IncomeValue.new(icome_id: income.id) } unless income_values.present?
+  end
 
-    def income_values_attributes=(attributes)
-      self.income_values = attributes.map do |_, income_value_attributes|
-        Form::IncomeValue.new(income_value_attributes).tap { |v| puts v }
+  def income_values_attributes=(attributes)
+    self.income_values = attributes.map do |_, income_value_attributes|
+      Form::IncomeValue.new(income_value_attributes).tap { |v| puts v}
     end
   end
 
   def valid?
-    valid_income_values = self.income_values.map(&:valid?),all?
+    valid_income_values = self.income_values.map(&:valid?).all?
     super && valid_income_values
   end
 
   def save
     return false unless valid?
     IncomeValue.transaction {
-      self.income_values.delect.each { |income_value|
-        a1 = IncomeValue.new(:income_id => income_value.income_id,
+      self.income_values.select.each { |income_value|
+        a1 = IncomeValue.new(:icome_id => income_value.icome_id,
           :year_manth => income_value.year_manth,
           :value => income_value.value,
           :description => income_value.description)

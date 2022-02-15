@@ -2,7 +2,7 @@
 
 <h2>収入科目の新規データ登録</h2>
 <p>登録年月を設定してください</p>
-  <%= form_tag({controller: :income_values, action: :new}, {metod: :post}) do %>
+  <%= form_tag({controller: :income_values, action: :new}, {method: :post}) do %>
     <input type="month" name="year_manth">
     <input type="submit">
   <% end %>
@@ -20,11 +20,12 @@
         <% @income_values.each do |income_value| %>
           <tr>
             <td><%= income_value.year_manth.strftime('%Y年%m月') %></td>
-            <td><%= @incomes.find(income_value.income_id).name %></td>
+            <td><%= @incomes.find(income_value.icome_id).name %></td>
             <td><%= income_value.value.to_s(:delimited) %> 円</td>
+            <td><%= income_value.description %></td>
             <td>
               <%= link_to "編集", edit_income_value_path(income_value) %> |
-              <%= link_to "削除", income_value_path(income_value), metod: :delete, "data-confirm" => "本当に削除します？" %>
+              <%= link_to "削除", income_value_path(income_value), method: :delete, "data-confirm" => "本当に削除します？" %>
             </td>
           </tr>
         <% end %>
