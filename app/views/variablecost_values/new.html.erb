@@ -1,6 +1,6 @@
 <h2>登録日科目　データ登録</h2>
   <div class="toolbar"><%= link_to "変動費科目データ一覧に戻る", variablecost_values_path %></div>
-    <% form_with model: @form, url:variablecost_values_path, method: :post, local:true do |fb| %>
+    <%= form_with model: @form, url:variablecost_values_path, method: :post, local:true do |fb| %>
      <table>
        <tr>
          <th>登録年月</th>
