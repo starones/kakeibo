@@ -14,7 +14,7 @@ class FixedcostValuesController < ApplicationController
 
   def edit
     @fixedcost_value = FixedcostValue.find(params[:id])
-    @fixedcost = fixedcost.find(@fixedcost_value.fixedcost_id)
+    @fixedcost = Fixedcost.find(@fixedcost_value.fixedcost_id)
   end
 
   def create
@@ -26,7 +26,7 @@ class FixedcostValuesController < ApplicationController
     end
   end
 
-  def fixedcosts_form_params
+  def fixedcost_form_params
     params
       .require(:form_fixedcost_form)
       .permit(fixedcost_values_attributes: Form::FixedcostValue::REGISTRABLE_ATTRIBUTES)
