@@ -13,7 +13,7 @@
           <tbody>
             <%= @income_values.each do |income_value| %>
               <tr>
-                <td><%= @incomes.find(income_value.iome_id).name %></td>
+                <td><%= @incomes.find(income_value.icome_id).name %></td>
                 <td style="text-aligin: right"><%= income_value.value %>円</td>
                 <td><%= income_value.description %></td>
               </tr>
