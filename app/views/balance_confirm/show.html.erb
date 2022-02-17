@@ -1,4 +1,5 @@
 <h2><%= @year_month %> 月次収支確認</h2>
+<%= @year_manth %>
   <h3>収入</h3>
       <% if @income_values.present? %>
         <table>
@@ -12,7 +13,7 @@
           <tbody>
             <%= @income_values.each do |income_value| %>
               <tr>
-                <td><%= @incomes.find(income_value.icome_id).name %></td>
+                <td><%= @incomes.find(income_value.iome_id).name %></td>
                 <td style="text-aligin: right"><%= income_value.value %>円</td>
                 <td><%= income_value.description %></td>
               </tr>
@@ -27,7 +28,7 @@
       <% else %>
         <p>登録されている収入がありません。</p>
       <% end %>
-      
+
   <h3>固定費</h3>
     <% if @fixedcost_value.present? %>
       <table>
@@ -56,7 +57,7 @@
     <% else %>
       <p>登録されている固定費がありません。</p>
     <% end %>
-    
+
   <h3>変動費</h3>
     <% if @variablecost_values.present? %>
       <table>
@@ -82,7 +83,7 @@
             </tr>
         </tbody>
       </table>
-      
+
       <h3>収支結果</h3>
         <table>
           <tbody>
@@ -97,4 +98,3 @@
     <% else %>
       <p>登録されている変動費がありません。</p>
     <% end %>
-    
