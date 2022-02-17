@@ -7,19 +7,15 @@ class BalanceConfirmController < ApplicationController
 		@incomes = Income.order(created_at: :asc)
 		@fixedcosts = Fixedcost.order(created_at: :asc)
 		@variablecosts = Variablecost.order(created_at: :asc)
-
     #収入計算
 		@income_values =IncomeValue.where(year_manth: @year_month)
 		@income_value_total = cal_income_total(@income_values)
-
 		#固定費計算
 		@fixedcost_values = FixedcostValue.where(year_month: @year_month)
 		@fixedcost_value_total = cal_fixedcost_total(@fixedcost_values)
-
 		#変動費計算
 		@variablecost_values = VariablecostValue.where(year_month: @year_month)
 		@variablecost_value_total = cal_variablecost_total(@variablecost_values)
-
 		#収支差
 		@balance_difference = @income_value_total - (@fixedcost_value_total + @variablecost_value_total)
 	end
